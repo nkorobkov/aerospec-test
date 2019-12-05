@@ -1,9 +1,8 @@
 ## Aerospec test
 
+Test task for interview in Aerospec Technologies
 
-### MySQL with python with django
+Task description and initial DB configuration can be found in the [docs folder](https://github.com/nkorobkov/aerospec-test/tree/master/docs)
 
-- Django needs mysqlclient package to run. 
-- to install mysqlclient you need to have mysql in path.
-- If installed from pkg mysql does not add itself to path. 
-- 
+Application is hosted with Amazon web services here:  <http://3.83.149.176/issues/>
+
