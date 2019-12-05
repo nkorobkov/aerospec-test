@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 if os.environ.get('DJANGO_MODE', 'DEV') == 'PROD':
-    DEBUG = False
+    DEBUG = bool(os.environ.get('DJANGO_DEBUG',False))
     issuesDB = {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'interview',
+        'NAME': 'Interview',
         'USER': 'app',
         'PASSWORD': os.environ.get('DJANGO_ISSUES_DB_PASS'),
         'HOST': os.environ.get('DJANGO_ISSUES_DB_URL'),
