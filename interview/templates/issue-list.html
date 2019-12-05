@@ -1,0 +1,29 @@
+{% extends  'base.html' %}
+
+{% block content %}
+    <a class="btn btn-large btn-primary" href= {%  url 'add_issue' %}> Create New Issue</a>
+    <br>
+    <h2 class="h2">Created Issues: </h2>
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Site Name</th>
+            <th>Panel Brand</th>
+            <th>Panel Model</th>
+            <th>Comment</th>
+        </tr>
+
+        {% for issue in issues %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ issue.site_name }}</td>
+                <td>{{ issue.panel_model }}</td>
+                <td>{{ issue.panel_brand }}</td>
+                <td>{{ issue.comment }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

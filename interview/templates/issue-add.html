@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/issues/add/" method="post"  class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+<br>
+    <a class="btn  btn-warning" href={% url 'issues' %}>Back</a>
+
+{% endblock %}

@@ -12,6 +12,32 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+if os.environ.get('DJANGO_MODE', 'DEV') == 'PROD':
+    DEBUG = False
+    issuesDB = {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'interview',
+        'USER': 'app',
+        'PASSWORD': os.environ.get('DJANGO_ISSUES_DB_PASS'),
+        'HOST': os.environ.get('DJANGO_ISSUES_DB_URL'),
+        'PORT': '3306',
+    }
+    ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
+
+
+else: # dev env
+    DEBUG = True
+
+    issuesDB = {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'interview',
+        'USER': 'app',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+    ALLOWED_HOSTS = []
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,9 +49,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5tcp5g2$l2hem=13t-ui8v+9xi+3=v*q#^=qa^1uur@q56#=q&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -76,13 +100,11 @@ WSGI_APPLICATION = 'aerospec.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'interview',
-        'USER': 'app',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'default',
+    },
+
+    'interview_db': issuesDB
 }
 
 
