@@ -33,10 +33,10 @@ class AddIssueView(View):
             try:
                 save_issue_from_formdata(form.cleaned_data)
             except (ValueError, OperationalError):
-                return HttpResponseRedirect('/issues/add/?message=There was a problem saving your Issue.&class=error')
+                return HttpResponseRedirect('/issues/add/?message=There was a problem saving your Issue.&class=danger')
             return HttpResponseRedirect('/issues/?message=Your issue is added successfully&class=success')
         return HttpResponseRedirect(
-            '/issues/add/?message=We could not process this data, try changing something&class=error')
+            '/issues/add/?message=We could not process this data, try changing something&class=danger')
 
 
 def save_issue_from_formdata(data):

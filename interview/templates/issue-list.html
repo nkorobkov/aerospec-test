@@ -3,6 +3,7 @@
 {% block content %}
     <a class="btn btn-large btn-primary" href= {%  url 'add_issue' %}> Create New Issue</a>
     <br>
+    {% if issues %}
     <h2 class="h2">Created Issues: </h2>
 
     <table class="table">
@@ -25,5 +26,7 @@
         {% endfor %}
 
     </table>
-
+    {% else %}
+    <h2> We don't have any issues now. Congratulations :)</h2>
+    {% endif %}
 {% endblock %}
