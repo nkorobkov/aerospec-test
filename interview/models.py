@@ -5,7 +5,7 @@ class Issue(models.Model):
     id_issue = models.AutoField(db_column='idIssue', primary_key=True)
     site = models.ForeignKey('Site', models.DO_NOTHING, db_column='Site')
     panel = models.ForeignKey('Panel', models.DO_NOTHING, db_column='Panel')
-    comment = models.TextField(db_column='Comment', blank=True, null=True)
+    comment = models.TextField(db_column='Comment', blank=True, null=True,  max_length=199)
 
     class Meta:
         managed = False
